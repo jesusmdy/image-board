@@ -17,6 +17,6 @@
 .history
 .ionide
 
-server/node_modules/
-server/images/uploads/*
-server/.env
+/server/node_modules/
+/server/images/uploads/*
+/server/.env
