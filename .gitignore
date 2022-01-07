@@ -18,5 +18,5 @@
 .ionide
 
 server/node_modules/
-server/images/uploads/*
+server/images/uploads/
 server/.env
