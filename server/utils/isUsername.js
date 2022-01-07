@@ -1,0 +1,1 @@
+module.exports = username => /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/.test(username)
