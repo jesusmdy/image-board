@@ -46,6 +46,13 @@ function getPostsByTags({page, limit, tags}) {
   return getPosts({page, limit, query})
 }
 
+function getPostByUser({author, page}) {
+  const query = {
+    author: author
+  }
+  return getPosts({page, query})
+}
+
 function removePostById({postId}) {
   return Post.findByIdAndDelete(postId)
 }
@@ -60,5 +67,6 @@ module.exports = {
   getPosts,
   getPostsByTags,
   getPostById,
-  removePostById
+  removePostById,
+  getPostByUser
 }

@@ -17,6 +17,10 @@ const listPosts = require('./routes/posts/posts')
 const showPost = require('./routes/posts/post')
 const deletePost = require('./routes/posts/delete')
 
+// Users
+const showUser = require('./routes/users/user')
+const showUserPosts = require('./routes/users/userPosts')
+
 fastify.register(fileUpload)
 fastify.get('/', index)
 fastify.decorateRequest('user', '')
@@ -24,6 +28,10 @@ fastify.decorateRequest('user', '')
 // Authentication
 fastify.post('/auth/register', register)
 fastify.post('/auth/login', login)
+
+// Users
+fastify.route(showUser)
+fastify.route(showUserPosts)
 
 // Posts
 fastify.decorateRequest('uploaded', '')
