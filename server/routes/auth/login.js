@@ -5,6 +5,7 @@ const USER_STATUS = require('../../consts/USER_STATUS')
 
 const login = async (req, reply) => {
   const {identifier, password} = req.body
+  if (!identifier && !password) return accessError(reply, 'Invalid data')
   let data
   if(isEmail(identifier)) data = await authWithEmail(identifier, password)
   const {user, isValidPassword, status, token} = data

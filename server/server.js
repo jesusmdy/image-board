@@ -3,6 +3,7 @@ const fastify = require('fastify')({
   //logger: process.env.IS_DEVELOPMENT || false
 })
 const fileUpload = require('fastify-file-upload')
+const fastifyCors = require('fastify-cors')
 
 const {connectDb} = require('./config/mongodb')
 const startServer = require('./start')
@@ -22,6 +23,18 @@ const showUser = require('./routes/users/user')
 const showUserPosts = require('./routes/users/userPosts')
 
 fastify.register(fileUpload)
+fastify.register(fastifyCors, function (instance) {
+  return (req, callback) => {
+    let corsOptions
+    const origin = req.headers.origin
+    if(/localhost/.test(origin)) {
+      corsOptions = {origin: true}
+    } else {
+      corsOptions = {origin: false}
+    }
+    callback(null, corsOptions)
+  }
+})
 fastify.get('/', index)
 fastify.decorateRequest('user', '')
 
